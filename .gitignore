@@ -1,0 +1,17 @@
+# generated results (copy the figures you need to Overleaf)
+output/*
+!output/.gitkeep
+
+# MATLAB
+*.asv
+*.m~
+*.mat
+*.mex*
+slprj/
+
+# videos
+*.mp4
+*.avi
+
+# macOS
+.DS_Store
