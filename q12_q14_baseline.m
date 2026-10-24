@@ -21,7 +21,7 @@ plot_results('save', fig, 'q12_snapshots', 'image');
 P = @(tt) out.snapPhi(:,:,abs(out.snapT - tt) < 1e-9);   % field at a stored time
 mid = round(m.Ny/2);
 
-fig = figure('Position', [100 100 1200 350]);
+fig = figure('Position', [100 100 900 320]);
 subplot(1,3,1); hold on; grid on
 Pa = P(0.05); Pb = P(0.5);
 plot(Pa(:,1), m.y*1e3, 'o-', Pb(:,1), m.y*1e3, 's-');

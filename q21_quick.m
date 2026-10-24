@@ -21,7 +21,7 @@ end
 
 % relative variation of the peak w.r.t. the finest mesh
 relVar = abs(pk - pk(:,end))./pk(:,end);
-fig = figure;
+fig = figure('Position', [100 100 600 400]);
 semilogy(Nxs(1:end-1), 100*relVar(1,1:end-1), 'o-', Nxs(1:end-1), 100*relVar(2,1:end-1), 's-');
 grid on; xlabel('N_x'); ylabel('relative variation of max \phi_{out} [%]');
 legend(schemes, 'Location', 'best');

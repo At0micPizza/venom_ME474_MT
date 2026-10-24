@@ -20,7 +20,7 @@ end
 function fig = plot_timeseries(outs, ttl)
 if ~iscell(outs), outs = {outs}; end
 
-fig = figure('Position', [100 100 800 600]);
+fig = figure('Position', [100 100 600 450]);
 tl  = tiledlayout(fig, 2, 1, 'TileSpacing', 'compact');
 if nargin >= 2 && ~isempty(ttl), title(tl, ttl); end
 
@@ -54,7 +54,7 @@ end
 function fig = plot_snapshots(out, clim_)
 if nargin < 2, clim_ = []; end
 nS  = numel(out.snapT);
-fig = figure('Position', [100 100 900 max(250, 160*nS)]);
+fig = figure('Position', [100 100 700 max(250, 120*nS)]);
 tl  = tiledlayout(fig, nS, 1, 'TileSpacing', 'compact');
 for s = 1:nS
     plot_field(nexttile(tl), out.mesh, out.snapPhi(:,:,s), out.snapT(s), clim_);
@@ -110,6 +110,7 @@ end
 
 function save_figure(fig, name, content)
 if nargin < 3, content = 'vector'; end
+fontsize(fig, 12, 'points');   % readable once scaled into the report
 outDir = fullfile(fileparts(mfilename('fullpath')), 'output');
 if ~isfolder(outDir), mkdir(outDir); end
 exportgraphics(fig, fullfile(outDir, [name '.pdf']), 'ContentType', content, 'Resolution', 300);
