@@ -46,7 +46,7 @@ end
 ylabel(ax1, '$\bar\phi_{out}$ [g/L]', 'Interpreter', 'latex');
 ylabel(ax2, '$\phi_{Total}$ [g/L$\cdot$m$^2$]', 'Interpreter', 'latex');
 xlabel(ax2, 't [s]');
-legend(ax1, 'Location', 'best', 'Interpreter', 'none');
+legend(ax2, 'Location', 'northeast', 'Interpreter', 'none');   % phiTot is ~0 at late times, so this corner is empty
 linkaxes([ax1 ax2], 'x');
 end
 

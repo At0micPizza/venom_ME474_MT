@@ -15,8 +15,7 @@ plot_results.m       'timeseries' | 'snapshots' | 'field' | 'video' | 'save'
 q12_q14_baseline.m   Q11-Q14
 q15_q20_explicit.m   Q15, Q20
 q16_q18_time_schemes.m  Q16-Q18
-q19_grid.m           Q19
-q21_quick.m          Q21
+q19_q21_grid.m       Q19, Q21 (UD and QUICK)
 output/              generated figures and videos (git-ignored)
 ```
 

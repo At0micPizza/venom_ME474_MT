@@ -10,7 +10,7 @@ fprintf('Re = %.1f, Gamma = %.4f (Pe = 10) to %.4f (Pe = 100) kg/(m s)\n', Re, G
 
 % Q12
 p.name = 'explicit, dt = 0.005 s';
-p.snapshotTimes = [0.05 0.1 0.5 2 5 9 12];
+p.snapshotTimes = [0.05 0.5 2 5 9];
 out = venom_solver(p);
 m = out.mesh;
 

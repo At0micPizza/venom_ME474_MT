@@ -1,25 +1,17 @@
-%% Q16-Q18: implicit Euler and Crank-Nicolson on (100,10)
-clear; close all; clc
-
-% Q16: explicit vs implicit, dt = 0.005
+%% Q16 + Q17: explicit vs implicit, implicit with different time steps
 p = default_params();
 p.name = 'explicit, dt = 0.005 s';
 outEx = venom_solver(p);
-p.theta = 1;  p.name = 'implicit, dt = 0.005 s';
-outIm = venom_solver(p);
 
-fig = plot_results('timeseries', {outEx, outIm});
-plot_results('save', fig, 'q16_timeseries');
-
-% Q17: implicit with other time steps
+p.theta = 1;
 dts  = [0.01 0.005 0.0025 0.001 0.0005];
 outs = cell(size(dts));
 for k = 1:numel(dts)
     p.dt = dts(k);  p.name = sprintf('implicit, dt = %g s', dts(k));
     outs{k} = venom_solver(p);
 end
-fig = plot_results('timeseries', outs);
-plot_results('save', fig, 'q17_timeseries');
+fig = plot_results('timeseries', [{outEx}, outs]);
+plot_results('save', fig, 'q16_q17_timeseries');
 
 % Q18: Crank-Nicolson, dt = 0.0025
 p = default_params();
