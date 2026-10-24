@@ -1,23 +1,10 @@
 function varargout = plot_results(mode, varargin)
-% PLOT_RESULTS  All plotting and export in one place.
-%
-%   fig = plot_results('timeseries', {out1, out2, ...}, title)
-%         Step-14 plot: y-averaged outlet concentration and total venom vs t.
-%         Legend from out.p.name; diverged runs are marked and not used for the y-limits.
-%
-%   fig = plot_results('snapshots', out, clim)
-%         All stored snapshots (p.snapshotTimes) stacked, same colour range.
-%
-%   h   = plot_results('field', ax, mesh, Phi, t, clim)
-%         One filled contour plot of Phi (Ny x Nx). Aspect ratio NOT respected.
-%
-%         plot_results('video', out, filename, fps, clim)
-%         mp4 of the stored frames (run with p.frameEvery > 0).
-%
-%         plot_results('save', fig, name)            vector PDF -> output/<name>.pdf
-%         plot_results('save', fig, name, 'image')   raster PDF (use for contour fields)
-%
-%   clim is the fixed colour range [min max]; default [0 1].
+% plotting helpers:
+%   fig = plot_results('timeseries', {out1, out2, ...}, title)   step-14 plots
+%   fig = plot_results('snapshots', out, clim)                   stored 2D fields
+%   h   = plot_results('field', ax, mesh, Phi, t, clim)          one 2D field
+%         plot_results('video', out, filename, fps, clim)        mp4 of the frames
+%         plot_results('save', fig, name, ['image'])             PDF in output/
 
 switch lower(mode)
     case 'timeseries', varargout = {plot_timeseries(varargin{:})};
