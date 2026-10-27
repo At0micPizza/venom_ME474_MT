@@ -44,5 +44,5 @@ Each script starts from `default_params()` and changes only what the question as
 | Q15-Q18 | time step and theta studies | done |
 | Q19-Q20 | grid refinement | done |
 | Q21 | QUICK | done |
-| Q22 | Robin (absorbing) walls | todo |
+| Q22 | Robin (absorbing) walls | in progress |
 | Q23-Q24 | pulsating flow, Pe = 100, video | todo |
