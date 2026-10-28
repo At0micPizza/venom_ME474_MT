@@ -176,11 +176,15 @@ A = A + sparse(n, n, 1, m.N, m.N);
 n = m.outlet;                      % outlet incl. corners: phi_n - phi_{n-1} = 0 (Q8)
 A = A + sparse([n; n], [n; n-1], [ones(size(n)); -ones(size(n))], m.N, m.N);
 
-n = m.bottom(2:end-1);             % bottom wall: phi_n - phi_{n+Nx} = 0 (Q10)
-A = A + sparse([n; n], [n; n+m.Nx], [ones(size(n)); -ones(size(n))], m.N, m.N);
+n = m.bottom(2:end-1);             % bottom wall: Robin BC (Q22), (Gam/dy + C)*phi_P - (Gam/dy)*phi_N = 0, corners excluded
+aP = p.Gam/m.dy+p.C;               
+aN = -p.Gam/m.dy;
+A = A + sparse([n; n], [n; n+m.Nx], [aP*ones(size(n)); aN*ones(size(n))], m.N, m.N);
 
-n = m.top(2:end-1);                % top wall: phi_n - phi_{n-Nx} = 0 (Q10)
-A = A + sparse([n; n], [n; n-m.Nx], [ones(size(n)); -ones(size(n))], m.N, m.N);
+n = m.top(2:end-1);                % top wall:    Robin BC (Q22), (Gam/dy + C)*phi_P - (Gam/dy)*phi_S = 0, corners excluded
+aP = p.Gam/m.dy+p.C;               
+aS = -p.Gam/m.dy;
+A = A + sparse([n; n], [n; n-m.Nx], [aP*ones(size(n)); aS*ones(size(n))], m.N, m.N);
 end
 
 
