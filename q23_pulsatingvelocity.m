@@ -47,20 +47,20 @@ outP3 = venom_solver(p);
 
 
 fig = plot_results('timeseries', {outS, outP, outP3});      % steady, 1 Hz, 3 Hz
-lgd = findobj(fig, 'Type', 'Legend');  lgd.Location = 'southwest';
+lgd = findobj(fig, 'Type', 'Legend');  lgd.Location = 'northeast';
 plot_results('save', fig, 'q24_timeseries_f');
 fprintf('t_leave: steady %.2f s, 1 Hz %.2f s, 3 Hz %.2f s\n', outS.tLeave, outP.tLeave, outP3.tLeave);
 
-% Q24b - Pe = 100
-p.Pe = 100;
-p.frameEvery = 20;
-p.name = 'f=3Hz, Pe =100';
-outPe100 = venom_solver(p);
-
-fig = plot_results('timeseries', {outP3, outPe100});        % Pe = 10 vs Pe = 100
-lgd = findobj(fig, 'Type', 'Legend');  lgd.Location = 'southwest';
-plot_results('save', fig, 'q24_timeseries_Pe');
-fprintf('t_leave: Pe = 10 %.2f s, Pe = 100 %.2f s\n', outP3.tLeave, outPe100.tLeave);
-
-% Q24c video
-plot_results('video', outPe100, fullfile('output', 'q24_Pe100.mp4'), 25, [0 0.1]);
+% % Q24b - Pe = 100
+% p.Pe = 100;
+% p.frameEvery = 20;
+% p.name = 'f=3Hz, Pe =100';
+% outPe100 = venom_solver(p);
+% 
+% fig = plot_results('timeseries', {outP3, outPe100});        % Pe = 10 vs Pe = 100
+% lgd = findobj(fig, 'Type', 'Legend');  lgd.Location = 'southwest';
+% plot_results('save', fig, 'q24_timeseries_Pe');
+% fprintf('t_leave: Pe = 10 %.2f s, Pe = 100 %.2f s\n', outP3.tLeave, outPe100.tLeave);
+% 
+% % Q24c video
+% plot_results('video', outPe100, fullfile('output', 'q24_Pe100.mp4'), 25, [0 0.1]);
